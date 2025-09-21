@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Prediction Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="login">
+        <h1>Crop Prediction Model</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="N" placeholder="Nitrogen" required />
+            <input type="text" name="P" placeholder="Phosphorus" required />
+            <input type="text" name="K" placeholder="Potassium" required />
+            <input type="text" name="temperature" placeholder="Temperature" required />
+            <input type="text" name="humidity" placeholder="Humidity" required />
+            <input type="text" name="ph" placeholder="pH" required />
+            <input type="text" name="rainfall" placeholder="Rainfall" required />
+            
+            <button type="submit" class="btn-submit">Predict</button>
+        </form>
+        <!-- This will display the prediction after form submission -->
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
